@@ -18,38 +18,45 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="/">Home</a>
+              <a class="nav-link h" href="/">Home</a>
             </li>
+            <% if(!currentUser){%>
             <li class="nav-item">
-              <a class="nav-link" href="/blogs">Healthy Lifestyle</a>
+              <a class="nav-link h" href="/blogs">Healthy Lifestyle</a>
             </li>
+            <%} else{%>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Healthy Lifestyle
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item h" href="/blogs">All Blogs</a>
+                <a class="dropdown-item h" href="/blogs/new">New Blog</a>
+              </div>
+            </li>
+            <%}%>
             <li class="nav-item">
-                <a class="nav-link" href="/publications">Publications</a>
+                <a class="nav-link h" href="/publications">Publications</a>
               </li> 
               <li class="nav-item">
-                <a class="nav-link" href="#">Photo Gallery</a>
-              </li> 
-              <% if(currentUser){ %>           
-            <li class="nav-item">
-              <a class="nav-link" href="/blogs/new" >New Blog</a>
-            </li>
-            <% } %>     
+                <a class="nav-link h" href="#">Photo Gallery</a>
+              </li>  
           </ul>
           <ul class="navbar-nav my-2 my-lg-0">
             <li class="nav-item">
-                <a class="nav-link" href="/about">About</a>
+                <a class="nav-link h" href="/about">About</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/contact">Contact</a>
+                <a class="nav-link h" href="/contact">Contact</a>
               </li>
               <% if(currentUser) {%>
               <li class="nav-item">
-                <a class="nav-link" href="/signout">Logout</a>
+                <a class="nav-link h" href="/signout">Logout</a>
               </li>
               
               <%} else {%>
                 <li class="nav-item">
-                  <a class="nav-link" href="/signin">Login</a>
+                  <a class="nav-link h" href="/signin">Login</a>
                 </li>
                 <% } %>
           </ul>
