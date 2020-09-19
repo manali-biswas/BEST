@@ -1,0 +1,23 @@
+<%-include("partials/header.ejs")%>
+<link rel='stylesheet' href='../stylesheets/show.css'>
+    <title><%=blog.title%></title>
+    <div class="container">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title"><%=blog.title%></h5>
+                <p class="card-text"><%=blog.body%></p>
+            </div>
+                <div class="card-footer"><small class="text-muted"><%=blog.created.toDateString()%></small></div>
+                                     
+          
+    </div>
+    <% if(currentUser){ %>
+    <a href="/blogs/<%=blog._id%>/edit" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Edit</a>
+    
+    <form action="/blogs/<%=blog._id%>?_method=DELETE" method="POST" id="delete">			
+        <button class="btn btn-danger btn-lg active" type="submit">Delete</button>
+    </form>
+    <% } %>
+
+</div>
+<%-include("partials/footer.ejs")%>

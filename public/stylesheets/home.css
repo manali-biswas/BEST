@@ -1,0 +1,28 @@
+body{
+    text-align:center;
+}
+
+.header{
+    background-color: #51f57d;
+    padding-bottom: 20px;
+}
+
+.options{
+    margin-top:3rem;
+}
+
+.last{
+    justify-content: center;
+}
+
+.m{
+    text-align: left;
+}
+
+.subheading{
+    text-decoration: underline;
+}
+
+a{
+    color: green;
+}

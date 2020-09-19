@@ -1,0 +1,15 @@
+.show{
+    opacity:1;
+}
+
+.disable{
+    display:none;
+}
+
+.header{
+    text-align:center;
+}
+
+.info{
+    text-decoration: underline;
+}
