@@ -15,6 +15,7 @@ const multer=require('multer');
 const path=require('path');
 const upload=require('./uploadpic');
 const upload2=require('./uploadpub');
+const atlas='mongodb+srv://moli:remember@cluster0.tdxrh.mongodb.net/best?retryWrites=true&w=majority'
 
 mongoose.connect(process.env.MONGODB_URL||atlas||'mongodb://localhost/mongoose_demo',{useNewUrlParser:true,useUnifiedTopology:true});
 
