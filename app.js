@@ -67,7 +67,7 @@ app.get('/publications',function(req,res){
             console.log(err);
         }
         else{
-            res.render('publications',{pubs: pubs});
+            res.render('publications',{pubs: pubs.reverse()});
         }
     })
 });
