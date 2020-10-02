@@ -9,6 +9,12 @@ const Blog=require('./models/blog');
 const express = require('express');
 const app=express();
 const User=require('./models/user');
+const Photo=require('./models/photo');
+const Pub=require('./models/pubs');
+const multer=require('multer');
+const path=require('path');
+const upload=require('./uploadpic');
+const upload2=require('./uploadpub');
 const atlas='mongodb+srv://moli:remember@cluster0.tdxrh.mongodb.net/best?retryWrites=true&w=majority'
 
 mongoose.connect(process.env.MONGODB_URL||atlas||'mongodb://localhost/mongoose_demo',{useNewUrlParser:true,useUnifiedTopology:true});
@@ -55,12 +61,108 @@ app.get('/about',function(req,res){
 });
 
 app.get('/publications',function(req,res){
-    res.render('publications');
+    Pub.find({},function(err,pubs){
+        if(err){
+            res.redirect('/');
+            console.log(err);
+        }
+        else{
+            res.render('publications',{pubs: pubs});
+        }
+    })
+});
+
+app.get('/publications/new',function(req,res){
+    res.render('pubnew');
+});
+
+app.post('/uploadpub',function(req,res){
+    upload2(req, res,(error) => {
+        if(error){
+           res.redirect('/');
+           throw(error);
+        }else{
+          if(req.file == undefined){
+            
+            res.redirect('/');
+            console.log('File size too large');  
+          }else{
+               
+              /**
+               * Create new record in mongoDB
+               */
+              var fullPath = "pubs/"+req.file.filename;
+  
+              var document = {
+                path:     fullPath, 
+                title:   req.body.title
+              };
+    
+            var pub = new Pub(document); 
+            pub.save(function(error){
+              if(error){ 
+                throw error;
+              } 
+              res.redirect('/publications');
+           });
+        }
+      }
+    });
 });
 
 app.get('/contact',function(req,res){
     res.render('contact');
+});
+
+app.get('/photogallery',function(req,res){
+    Photo.find({},function(err,photos){
+        if(err){
+            res.redirect('/');
+            console.log(err);
+        }
+        else{
+            res.render('photo_gallery',{photos: photos.reverse()});
+        }
+    })
+});
+
+app.post('/uploadpic',function(req,res){
+    upload(req, res,(error) => {
+        if(error){
+           res.redirect('/');
+           throw(error);
+        }else{
+          if(req.file == undefined){
+            
+            res.redirect('/');
+            console.log('File size too large');  
+          }else{
+               
+              /**
+               * Create new record in mongoDB
+               */
+              var fullPath = "pics/"+req.file.filename;
+  
+              var document = {
+                path:     fullPath, 
+                caption:   req.body.caption
+              };
+    
+            var photo = new Photo(document); 
+            photo.save(function(error){
+              if(error){ 
+                throw error;
+              } 
+              res.redirect('/photogallery');
+           });
+        }
+      }
+    });
 })
+
+app.get('/photogallery/new',function(req,res){
+    res.render('photonew');
+});
 
 app.get('/blogs',function(req,res){
     Blog.find({},function(err,blogs){
@@ -68,7 +170,7 @@ app.get('/blogs',function(req,res){
             res.redirect('/');
         }
         else{
-            res.render('blogpage',{blogs:blogs});
+            res.render('blogpage',{blogs:blogs.reverse()});
         }
     });
 });

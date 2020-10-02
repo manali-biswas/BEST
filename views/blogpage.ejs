@@ -9,7 +9,7 @@
     <br><br>
     <% const f=9; var p=Math.ceil(blogs.length/f); for(var i=0;i<p;i++){ var x; if(i==0) x='show'; else x='disable';%>
     <div class="row row-cols-1 row-cols-md-3 <%=x%>" id="<%=i+1%>">        
-            <%var t=f;if(i==p-1&&blogs.length%6)t=blogs.length%f; var g=i*f; for(var j=g;j<g+t;j++){ const blog=blogs[j];%>
+            <%var t=f;if(i==p-1&&blogs.length%f)t=blogs.length%f; var g=i*f; for(var j=g;j<g+t;j++){ const blog=blogs[j];%>
         <div class="col mb-4">            
             <div class="card h-100">
               <div class="card-body">

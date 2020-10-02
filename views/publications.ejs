@@ -1,3 +1,49 @@
 <%- include("partials/header.ejs")%>
-<h1>Publications</h1>
+<link rel="stylesheet" href="../stylesheets/pub.css">
+<title>ARJAMA</title>
+
+<div class="container">  
+    <div class="k d-flex">
+    <div class="card mb-3 my">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <img src="pics/arjama/info.jpg" class="card-img" alt="..." width=200>
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">ARJAMA</h5>
+              <p class="card-text">Magazine publications of BEST Organization</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <% const f=9; var p=Math.ceil(pubs.length/f); for(var i=0;i<p;i++){ var x; if(i==0) x='show'; else x='disable';%>
+    <div class="row row-cols-1 row-cols-md-3 <%=x%>" id="<%=i+1%>">
+      <%var t=f;if(i==p-1&&pubs.length%f)t=pubs.length%f; var g=i*f; for(var j=g;j<g+t;j++){ const pub=pubs[j];%>      
+      <div class="col mb-4">
+        <div class="card" style="width:10rem;">
+          <a href="<%=pub.path%>" ><img src="pics/arjama/view.png" class="card-img-top"></a>
+          <div class="card-body">
+            <p class="card-title"><%=pub.title%></p>
+          </div>
+        </div>
+      </div>
+  <%}%>
+      
+</div>
+<%}%>
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+      <li class="page-item active"><a class="page-link bt" href="#1">1</a></li>
+    <% p=Math.ceil(pubs.length/f); for(var i=1;i<p;i++){ %>
+    <li class="page-item"><a class="page-link bt" href="#<%=i+1%>"><%=i+1%></a></li>
+    <%}%>
+    
+  </ul>
+</nav>
+</div>
+
+<script src='blogpage.js'></script>
 <%- include("partials/footer.ejs")%>
