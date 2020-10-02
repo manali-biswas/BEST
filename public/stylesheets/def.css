@@ -2,3 +2,11 @@ h1{
     text-align: center; 
     text-decoration: underline;
 }
+
+.show{
+    opacity:1;
+}
+
+.disable{
+    display:none;
+}

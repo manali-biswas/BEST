@@ -6,3 +6,11 @@
     max-width: 630px;
     background-color: #e3d6c8;
 }
+
+.show{
+    opacity:1;
+}
+
+.disable{
+    display:none;
+}
