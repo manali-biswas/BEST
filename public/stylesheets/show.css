@@ -12,10 +12,12 @@ html{
 
 .h{
     font-family: 'Raleway', sans-serif;
+    
 }
 
 
 .m{
+    border: 3px wave green;
     height:100%;
     text-align:center;
     display:flex;

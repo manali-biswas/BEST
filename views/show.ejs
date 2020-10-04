@@ -2,13 +2,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
 <link rel='stylesheet' href='../stylesheets/show.css'>
 <title><%=blog.title%></title>
-<div class="container m">
+<div class="container m">    
     <h1><%=blog.title%></h1>
     <br>
     <div class="h">
         <%-blog.body%>
     </div>
-    <small class="text-muted"><%=blog.created.toDateString()%></small>                    
+    <small class="text-muted"><%=blog.created.toDateString()%></small>
+    <img src="/leaf.png">                
     <br>
     <br>
     <% if(currentUser){ %>
