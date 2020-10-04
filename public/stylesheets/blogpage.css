@@ -12,4 +12,14 @@
 
 .info{
     text-decoration: underline;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+.m{
+    justify-content: center;
+}
+
+.pagination{
+    display:flex;
+    justify-content: center;
 }

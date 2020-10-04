@@ -1,0 +1,13 @@
+<%-include("partials/header.ejs")%>
+<link rel="stylesheet" href="/stylesheets/pub2.css">
+<title><%=pub.title%></title>
+
+<h1><%=pub.title%></h1>
+
+<br>
+
+<div class="container m">
+<embed src="/<%=pub.path%>" type="application/pdf" width="100%" height='100%'></embed>
+</div>
+
+<%-include("partials/footer.ejs")%>

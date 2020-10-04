@@ -2,9 +2,18 @@
     text-align: center;
     justify-content:center;
 }
+
+.u{
+    text-align: center;
+}
+
 .my{
     max-width: 630px;
     background-color: #e3d6c8;
+}
+
+.t{
+    text-decoration: underline;
 }
 
 .show{
@@ -13,4 +22,13 @@
 
 .disable{
     display:none;
+}
+
+.pagination{
+    display:flex;
+    justify-content: center;
+}
+
+.m{
+    justify-content: center;
 }

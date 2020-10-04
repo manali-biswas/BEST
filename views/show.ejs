@@ -1,22 +1,24 @@
 <%-include("partials/header.ejs")%>
+<link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
 <link rel='stylesheet' href='../stylesheets/show.css'>
-    <title><%=blog.title%></title>
-    <div class="container">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title"><%=blog.title%></h5>
-                <p class="card-text"><%=blog.body%></p>
-            </div>
-                <div class="card-footer"><small class="text-muted"><%=blog.created.toDateString()%></small></div>
-                                     
-          
+<title><%=blog.title%></title>
+<div class="container m">
+    <h1><%=blog.title%></h1>
+    <br>
+    <div class="h">
+        <%-blog.body%>
     </div>
+    <small class="text-muted"><%=blog.created.toDateString()%></small>                    
+    <br>
+    <br>
     <% if(currentUser){ %>
-    <a href="/blogs/<%=blog._id%>/edit" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Edit</a>
+    <div class="">
+    <a href="/blogs/<%=blog._id%>/edit" class="btn btn-warning btn-lg" role="button" aria-pressed="true">Edit</a>
     
     <form action="/blogs/<%=blog._id%>?_method=DELETE" method="POST" id="delete">			
-        <button class="btn btn-danger btn-lg active" type="submit">Delete</button>
+        <button class="btn btn-danger btn-lg" type="submit">Delete</button>
     </form>
+    </div>
     <% } %>
 
 </div>

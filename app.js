@@ -67,13 +67,25 @@ app.get('/publications',function(req,res){
             console.log(err);
         }
         else{
-            res.render('publications',{pubs: pubs});
+            res.render('publications',{pubs: pubs.reverse()});
         }
     })
 });
 
 app.get('/publications/new',function(req,res){
     res.render('pubnew');
+});
+
+app.get('/publications/:id',function(req,res){
+    Pub.findById(req.params.id,function(err,pub){
+        if(err){
+            res.redirect('/');
+            console.log(err);
+        }
+        else{
+            res.render('pub',{pub: pub});
+        }
+    })
 });
 
 app.post('/uploadpub',function(req,res){
