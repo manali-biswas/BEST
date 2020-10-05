@@ -24,6 +24,12 @@
       <div class="alert alert-danger u" role="alert">
         The upcoming publication of ARJAMA will be published in the festive season. Stay tuned!
       </div>
+      <% if(currentUser){%>
+        <div class="u">
+        <a class="btn btn-danger" href="/publications/new" role="button">New Publication</a>
+        </div>
+        <% } %>
+        <br>
     <% }else{const f=9; var p=Math.ceil(pubs.length/f); for(var i=0;i<p;i++){ var x; if(i==0) x='show'; else x='disable';%>
     <div class="row row-cols-1 row-cols-md-3 <%=x%> m" id="<%=i+1%>">
       <%var t=f;if(i==p-1&&pubs.length%f)t=pubs.length%f; var g=i*f; for(var j=g;j<g+t;j++){ const pub=pubs[j];%>      

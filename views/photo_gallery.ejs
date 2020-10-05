@@ -4,6 +4,13 @@
 <div class="container">
 <h1>Photo Gallery</h1>
 <br>
+<% if(currentUser){%>
+  <div class="k">
+  <a class="btn btn-primary" href="/photogallery/new" role="button">New Photo</a>
+  </div>
+  <% } %>
+  <hr>
+  <br>
 <div class="container">
   <% const f=9; var p=Math.ceil(photos.length/f); for(var i=0;i<p;i++){ var x; if(i==0) x='show'; else x='disable';%>
     <div class="row row-cols-1 row-cols-md-3 <%=x%> h" id="<%=i+1%>">

@@ -1,0 +1,26 @@
+<%- include("partials/header.ejs")%>
+<title>Activities</title>
+<link rel="stylesheet" href="/stylesheets/def.css">
+<div class="container">
+    <h1>Activities</h1>
+    <br>   
+    
+    <% if(currentUser){%>
+    <div class="k">
+    <a class="btn btn-success" href="/activity/new" role="button">New Activity</a>
+    </div>
+    <% } %>
+    <hr>
+    <br>
+    <ul class="list-group g" >
+        <% activities.forEach(function(activity){%>
+            <li class="list-group-item list-group-item-danger"><%=activity.name%></li>
+        <%})%>
+        <li class="list-group-item list-group-item-primary">BEST Class</li>
+        <li class="list-group-item list-group-item-primary">Food Bank/ Cloth Bank</li>
+        <li class="list-group-item list-group-item-primary">One day workshop</li>
+        <li class="list-group-item list-group-item-primary">BEST Library</li>
+    </ul>
+</div>
+
+<%- include("partials/footer.ejs")%>

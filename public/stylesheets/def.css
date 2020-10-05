@@ -20,6 +20,11 @@ html{
      justify-content:center;
  }
 
+ 
+ .g{
+    margin:2% 30%;
+}
+
 .show{
     opacity:1;
 }
@@ -35,4 +40,8 @@ html{
 
 .h{
     justify-content: center;
+}
+
+.k{
+    text-align: center;
 }

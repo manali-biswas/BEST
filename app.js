@@ -11,6 +11,7 @@ const app=express();
 const User=require('./models/user');
 const Photo=require('./models/photo');
 const Pub=require('./models/pubs');
+const Activity=require('./models/activity');
 const multer=require('multer');
 const path=require('path');
 const upload=require('./uploadpic');
@@ -58,6 +59,35 @@ app.get('/',function(req,res){
 
 app.get('/about',function(req,res){
     res.render('about');
+});
+
+app.get('/activity',function(req,res){
+    Activity.find({},function(err,activities){
+        if(err){
+            console.log(err);
+            res.redirect('/');
+        }
+        else{
+            res.render('activity',{activities:activities.reverse()});
+        }
+    });    
+});
+
+app.get('/activity/new',function(req,res){
+    res.render('actnew');
+});
+
+app.post('/activity',function(req,res){
+    const activity=req.body.activity;
+    Activity.create(activity,function(err,obj){
+        if(err){
+            console.log(err);
+            res.redirect('/');
+        }
+        else{
+            res.redirect('/activity');
+        }
+    });
 });
 
 app.get('/publications',function(req,res){
@@ -170,7 +200,8 @@ app.post('/uploadpic',function(req,res){
         }
       }
     });
-})
+});
+
 
 app.get('/photogallery/new',function(req,res){
     res.render('photonew');
