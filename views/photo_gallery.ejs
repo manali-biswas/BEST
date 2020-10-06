@@ -17,7 +17,7 @@
       <%var t=f;if(i==p-1&&photos.length%f)t=photos.length%f; var g=i*f; for(var j=g;j<g+t;j++){ const photo=photos[j];%>
         <div class="col mb-4">
           <div class="card h-100 " style="width:18rem;">
-            <img src="<%=photo.path%>" class="card-img-top" alt="...">
+            <img src="<%=photo.path%>" class="card-img-top" alt="Loading...">
             <div class="card-body">
               <p class="card-text"><%=photo.caption%></p>
             </div>
