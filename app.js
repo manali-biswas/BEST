@@ -12,10 +12,6 @@ const User=require('./models/user');
 const Photo=require('./models/photo');
 const Pub=require('./models/pubs');
 const Activity=require('./models/activity');
-const multer=require('multer');
-const path=require('path');
-const upload=require('./uploadpic');
-const upload2=require('./uploadpub');
 const atlas='mongodb+srv://moli:remember@cluster0.tdxrh.mongodb.net/best?retryWrites=true&w=majority'
 
 mongoose.connect(process.env.MONGODB_URL||atlas||'mongodb://localhost/mongoose_demo',{useNewUrlParser:true,useUnifiedTopology:true});
@@ -119,36 +115,16 @@ app.get('/publications/:id',function(req,res){
 });
 
 app.post('/uploadpub',function(req,res){
-    upload2(req, res,(error) => {
-        if(error){
-           res.redirect('/');
-           throw(error);
-        }else{
-          if(req.file == undefined){
-            
+    const pub=req.body.pub;
+
+    Pub.create(pub,function(err,pub){
+        if(err){
+            console.log(err);
             res.redirect('/');
-            console.log('File size too large');  
-          }else{
-               
-              /**
-               * Create new record in mongoDB
-               */
-              var fullPath = "pubs/"+req.file.filename;
-  
-              var document = {
-                path:     fullPath, 
-                title:   req.body.title
-              };
-    
-            var pub = new Pub(document); 
-            pub.save(function(error){
-              if(error){ 
-                throw error;
-              } 
-              res.redirect('/publications');
-           });
         }
-      }
+        else{
+            res.redirect('/publications');
+        }
     });
 });
 
@@ -169,37 +145,17 @@ app.get('/photogallery',function(req,res){
 });
 
 app.post('/uploadpic',function(req,res){
-    upload(req, res,(error) => {
-        if(error){
-           res.redirect('/');
-           throw(error);
-        }else{
-          if(req.file == undefined){
-            
+    const photo=req.body.photo;
+
+    Photo.create(photo,function(err,photo){
+        if(err){
+            console.log(err);
             res.redirect('/');
-            console.log('File size too large');  
-          }else{
-               
-              /**
-               * Create new record in mongoDB
-               */
-              var fullPath = "pics/"+req.file.filename;
-  
-              var document = {
-                path:     fullPath, 
-                caption:   req.body.caption
-              };
-    
-            var photo = new Photo(document); 
-            photo.save(function(error){
-              if(error){ 
-                throw error;
-              } 
-              res.redirect('/photogallery');
-           });
         }
-      }
-    });
+        else{
+            res.redirect('/photogallery');
+        }
+    })
 });
 
 

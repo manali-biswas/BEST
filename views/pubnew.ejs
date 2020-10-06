@@ -5,14 +5,14 @@
 <div class="container">
 <h1>Upload Publication</h1>
 <br>
-<form action="/uploadpub" method="POST" enctype="multipart/form-data">     
+<form action="/uploadpub" method="POST">     
     <div class="form-group">
-        <label for="pub">Publication</label>
-        <input type="file" class="form-control-file" id="pub" name="pub">
+        <label for="pub[path]">Publication Link</label>
+        <input type="url" class="form-control" id="pub[path]" name="pub[path]">
       </div>
     <div class="form-group">
-        <label for="caption">Publication Title</label>
-        <input type="text" class="form-control" name="title" id="title" placeholder="Example title">
+        <label for="pub[title]">Publication Title</label>
+        <input type="text" class="form-control" name="pub[title]" id="pub[title]" placeholder="Example title">
       </div>  
     <button type="submit" class="btn btn-primary" required>Submit</button>
   </form>

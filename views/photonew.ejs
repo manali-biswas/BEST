@@ -5,14 +5,14 @@
 <div class="container">
 <h1>Upload Photo</h1>
 <br>
-<form action="/uploadpic" method="POST" enctype="multipart/form-data">     
+<form action="/uploadpic" method="POST">     
     <div class="form-group">
-        <label for="photo">Photo</label>
-        <input type="file" class="form-control-file" id="photo" name="photo">
+        <label for="path">Photo Link</label>
+        <input type="url" class="form-control" id="path" name="photo[path]">
       </div>
     <div class="form-group">
         <label for="caption">Photo Caption</label>
-        <input type="text" class="form-control" name="caption" id="caption" placeholder="Example caption">
+        <input type="text" class="form-control" name="photo[caption]" id="caption" placeholder="Example caption">
       </div>  
     <button type="submit" class="btn btn-primary" required>Submit</button>
   </form>
