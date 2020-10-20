@@ -5,7 +5,11 @@
 <div class="container">
 <h1>Upload Publication</h1>
 <br>
-<form action="/uploadpub" method="POST">     
+<form action="/uploadpub" method="POST"> 
+  <div class="form-group">
+    <label for="pub[pic]">Publication Cover Page Link</label>
+    <input type="url" class="form-control" id="pub[pic]" name="pub[pic]">
+  </div>    
     <div class="form-group">
         <label for="pub[path]">Publication Link</label>
         <input type="url" class="form-control" id="pub[path]" name="pub[path]">
