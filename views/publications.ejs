@@ -34,12 +34,10 @@
     <div class="row row-cols-1 row-cols-md-3 <%=x%> m" id="<%=i+1%>">
       <%var t=f;if(i==p-1&&pubs.length%f)t=pubs.length%f; var g=i*f; for(var j=g;j<g+t;j++){ const pub=pubs[j];%>      
       <div class="col mb-4">
-        <div class="card" style="width:10rem;">
-          <a href="/publications/<%=pub._id%>" ><img src="/pics/arjama/view.png" class="card-img-top"></a>
-          <div class="card-body">
-            <p class="card-title"><%=pub.title%></p>
-          </div>
-        </div>
+        <a href="/publications/<%=pub._id%>" class="alert-link">
+        <div class="alert alert-primary my2" role="alert">
+          <%=pub.title%>
+        </div></a>        
       </div>
   <%}%>
       
